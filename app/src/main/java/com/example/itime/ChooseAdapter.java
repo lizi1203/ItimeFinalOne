@@ -41,6 +41,7 @@ public class ChooseAdapter extends ArrayAdapter<ChooseItem> {
 
     Dialog dialog1 = new Dialog(getContext());
     Dialog dialog2 = new Dialog(getContext());
+    Date now=new Date();
     int year=2020;
     int month=1;
     int day=1;

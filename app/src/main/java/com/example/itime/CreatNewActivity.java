@@ -15,7 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -147,11 +147,9 @@ public class CreatNewActivity extends AppCompatActivity {
                 intent.putExtra("title", editTitle.getText().toString().trim());
                 intent.putExtra("description", editDescription.getText().toString().trim());
                 intent.putExtra("position", position);
-                if(date==null)
-                intent.putExtra("date",
-                        chooseAdapter.year+"-"+chooseAdapter.month+"-"+chooseAdapter.day+" "
-                                +chooseAdapter.hour+":"+chooseAdapter.minute+":"+chooseAdapter.second);
-                else
+
+
+                if(date!=null&&(chooseAdapter.year==2020)&&(chooseAdapter.day==1)&&(chooseAdapter.minute==0))
                 {
                     Date date1 = new Date();
                     String date2;
@@ -163,9 +161,11 @@ public class CreatNewActivity extends AppCompatActivity {
                     date2=sdFormat.format(date1);
                     intent.putExtra("date", date2);
                 }
-
+                else
+                    intent.putExtra("date",
+                            chooseAdapter.year+"-"+chooseAdapter.month+"-"+chooseAdapter.day+" "
+                                    +chooseAdapter.hour+":"+chooseAdapter.minute+":"+chooseAdapter.second);
                 setResult(RESULT_OK, intent);
-                Log.d("bookTitle", editTitle.getText().toString());
                 CreatNewActivity.this.finish();
             }
         });
